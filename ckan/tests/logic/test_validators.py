@@ -603,26 +603,12 @@ class TestPasswordValidator(object):
         password = 'MyPass1'
         key = ('password',)
 
-        @adds_message_to_errors_dict('Your password must be 8 characters or longer')
+        @adds_message_to_errors_dict('Your password must be 8 characters or '
+                                     'longer')
         def call_validator(*args, **kwargs):
             return validators.user_password_validator(*args, **kwargs)
         errors = factories.validator_errors_dict()
         errors[key] = []
         call_validator(key, {key: password}, errors, None)
-
-    def test_not_diverse_enough(self):
-        passwords = [
-            'password1', '1password', 'PASSWORD1', 'Password', 'passWord']
-        key = ('password',)
-
-        @adds_message_to_errors_dict(
-            'Your password must contain at least one lowercase letter, one '
-            'uppercase letter and a number')
-        def call_validator(*args, **kwargs):
-            return validators.user_password_validator(*args, **kwargs)
-        for password in passwords:
-            errors = factories.validator_errors_dict()
-            errors[key] = []
-            call_validator(key, {key: password}, errors, None)
 
 # TODO: Need to test when you are not providing owner_org and the validator queries for the dataset with package_show

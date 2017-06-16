@@ -584,10 +584,8 @@ def user_password_validator(key, data, errors, context):
     elif value == '':
         pass
     elif len(value) < 8:
-        errors[('password',)].append(_('Your password must be 8 characters or longer'))
-    elif not re.match('^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]+$', value):
-        errors[('password',)].append(_('Your password must contain at least '
-            'one lowercase letter, one uppercase letter and a number'))
+        errors[('password',)].append(_('Your password must be 8 characters or '
+                                       'longer'))
 
 def user_passwords_match(key, data, errors, context):
 
