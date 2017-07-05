@@ -5,9 +5,10 @@
 # again to retry
 ckan:
   container_name: ckan
-  # Note, if you are working on CKAN core, change this to
-  # build ../../
-  image: ckan/ckan:latest
+  # Build CKAN master:
+  build: ../../
+  # or use pre-built image:
+  # image: ckan/ckan:latest
   links:
       - db
       - solr
@@ -22,11 +23,11 @@ ckan:
 db:
   container_name: db
   build: postgresql/
-  
+
 solr:
   container_name: solr
   image: ckan/solr:latest
-    
+
 redis:
   container_name: redis
   image: redis:latest
