@@ -8,3 +8,4 @@ RUN echo "host all  all    0.0.0.0/0  md5" >> /var/lib/postgresql/data/pg_hba.co
 ENV POSTGRES_USER ckan
 ENV POSTGRES_PASSWORD ckan
 ENV POSTGRES_DB ckan
+

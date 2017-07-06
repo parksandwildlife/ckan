@@ -1,5 +1,5 @@
 # docker build . -t ckan && docker run -d -p 80:5000 --link db:db --link redis:redis --link solr:solr ckan
-
+# cd contrib/docker && docker-compose build && docker-compose start
 FROM debian:jessie
 MAINTAINER Open Knowledge
 
@@ -13,6 +13,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # Install required packages
 RUN apt-get -q -y update && apt-get -q -y upgrade && apt-get -q -y install \
+    apt-utils \
     python-dev \
     python-pip \
     python-virtualenv \
